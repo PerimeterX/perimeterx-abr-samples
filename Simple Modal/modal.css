@@ -1,0 +1,101 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+	display: flex;
+	align-items: center;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	background-image: url("bg.png");
+	background-size: cover;
+}
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-signin h1 {
+	color: #fff;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.modalWindow .modalWindowContent {
+	background-color: #fff;
+	border-radius: 10px;
+	padding:15px;
+}
+
+.modalWindow .modalWindowHeader {
+	font-size: 4em;
+}
+
+.modalWindow .modalWindowClose {
+	float:right;
+}
+
+.modalWindow {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.2);
+	z-index: 99999;
+	opacity:0;
+	pointer-events: none;
+	text-align:center;
+}
+
+.modalWindowTarget {
+	opacity:1;
+	pointer-events: auto;
+}
+.modalWindow > div {
+	width: 500px;
+	position: relative;
+	margin: 10% auto;
+	background: #fff;
+}
+
+.modalWindow #px-captcha {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.modalWindow #px-captcha .g-recaptcha {
+    display: inline-block;
+}
+
+.modalWindow .reasons {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.modalWindow .reasons span {
+    color: #C0C0C0;
+    font-size: 13px;
+}
