@@ -23,7 +23,7 @@
 	</div>
 	<div id="openModal" class="modalWindow">
 		<div class="modalWindowContent">
-			<div class="modalWindowClose"><button type="button" class="btn btn-outline-dark">X</button></div>
+			<div class="modalWindowClose"><span>x</span></div>
 			<div class="modalWindowHeader">🙀</div>
 			<div class="modalWindowBody">
 				<h5>We think you might be a bot...</h5>
@@ -32,6 +32,7 @@
 		            <span>You might have received this message if JavaScript or cookies were disabled in your browser settings. </span><br />
 		            <span>Occasionally a plugin or extension may be at fault. If you would like to learn more just reference <a href="https://www.perimeterx.com/whywasiblocked/#">Why Was I Blocked</a> for more details.</span>
 		        </div>
+		        <div class="pxRefId"></div>
 			</div>
 		</div>
 	</div>
@@ -62,6 +63,7 @@
 
 				    // raising the modal
 				    const modalElement = document.querySelector(".modalWindow");
+				    modalElement.querySelector(".pxRefId").innerText = `Reference ID: ${jsonResponse.uuid}`;
 				    modalElement.classList.add("modalWindowTarget");
 
 				    // This is where the magic happens. Add the blockscript to the page using a script element and append it to the head so it will get executed.
@@ -71,7 +73,7 @@
 				}
 			});
 		});
-		const closeBtnElement = document.querySelector(".btn-outline-dark");
+		const closeBtnElement = document.querySelector(".modalWindowClose");
 		closeBtnElement.addEventListener("click", (evt) => {
 			const modalElement = document.querySelector(".modalWindow");
 			modalElement.classList.remove("modalWindowTarget");

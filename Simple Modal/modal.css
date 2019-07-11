@@ -51,10 +51,13 @@ body {
 
 .modalWindow .modalWindowHeader {
 	font-size: 4em;
+	margin-top: -20px;
 }
 
 .modalWindow .modalWindowClose {
-	float:right;
+	text-align: right;
+	cursor: pointer;
+	font-size: 15px;
 }
 
 .modalWindow {
@@ -97,5 +100,9 @@ body {
 
 .modalWindow .reasons span {
     color: #C0C0C0;
+    font-size: 13px;
+}
+
+.modalWindow .pxRefId {
     font-size: 13px;
 }
