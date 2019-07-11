@@ -10,7 +10,7 @@ In special cases, (such as XHR post requests) a full Captcha page render might n
 
 Advanced Blocking Response occurs when a request that is marked for blocking contains an `Accept` header with the value of `application/json`. It returns a JSON with the following structure: 
 
-```
+```javascript
 {
     "appId": String,
     "jsClientSrc": String,
