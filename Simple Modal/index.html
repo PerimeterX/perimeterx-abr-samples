@@ -1,83 +1,83 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
+ <meta charset="utf-8">
   <title>PerimeterX ABR Modal Sample</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="modal.css"/>
 </head>
 <body class="text-center">
-	<div class="form-signin">
-		  <img class="mb-4" src="https://www.perimeterx.com/assets/images/default-thumb.png" alt="" width="72" height="72">
-		  <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
-		  <label for="inputEmail" class="sr-only">Email address</label>
-		  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-		  <label for="inputPassword" class="sr-only">Password</label>
-		  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-		  <div class="checkbox mb-3">
-		    <label>
-		      <input type="checkbox" value="remember-me"> Remember me
-		    </label>
-		  </div>
-		  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-	</div>
-	<div class="modalWindow">
-		<div class="modalWindowContent">
-			<div class="modalWindowClose"><span>x</span></div>
-			<div class="modalWindowHeader">🙀</div>
-			<div class="modalWindowBody">
-				<h5>We think you might be a bot...</h5>
-				<div id="px-captcha"></div>  <!-- This div is where the captcha element will be rendered. make sure you have this div somewhere in your modal. -->
-				<div class="reasons">
-		            <span>You might have received this message if JavaScript or cookies were disabled in your browser settings. </span><br />
-		            <span>Occasionally a plugin or extension may be at fault. If you would like to learn more just reference <a href="https://www.perimeterx.com/whywasiblocked/#">Why Was I Blocked</a> for more details.</span>
-		        </div>
-		        <div class="pxRefId"></div>
-			</div>
-		</div>
-	</div>
-	<script>
-		// this object mocks an advanced blocking response. In real world solution this will return from your network call.
-		const jsonResponse = {
-			"appId": "PXTEST",
-    		"jsClientSrc": "https://client.perimeterx.net/main.min.js",
-    		"firstPartyEnabled": false,
-    		"vid": "72a9b8fa-45aa-40b0-a3b5-f16c089a11cd",
-    		"uuid": "89c46bf1-07d3-45d5-8b9f-613642d8c80c",
-    		"hostUrl": "https://collector.perimeterx.net",
-    		"blockScript": "https://captcha.px-cdn.net/PXTEST/captcha.js?a=c&m=0"
-		}
-		const btnElement = document.querySelector(".btn-block");
-		btnElement.addEventListener("click", (evt) => {
-			// when the submit button is clicked we fake a network request that will result in advanced blocking response
-			fetch("https://httpstat.us/403").then((r) => {
-				if (!r.ok) {
-					// since we are receiving back a 403 the request wont be ok. We will use jsonResponse object as a mock response body.
-					// first, add the window parameters (note jsonResponse object is a mock for what would have returned from r.body on a real network call)
-					window._pxAppId = jsonResponse.appId;
-					window._pxJsClientSrc = jsonResponse.jsClientSrc;
-				    window._pxFirstPartyEnabled = jsonResponse.firstPartyEnabled;
-				    window._pxVid = jsonResponse.vid;
-				    window._pxUuid = jsonResponse.uuid;
-				    window._pxHostUrl = jsonResponse.hostUrl;
+  <div class="form-signin">
+      <img class="mb-4" src="https://www.perimeterx.com/assets/images/default-thumb.png" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  </div>
+  <div class="modalWindow">
+    <div class="modalWindowContent">
+      <div class="modalWindowClose"><span>x</span></div>
+      <div class="modalWindowHeader">🙀</div>
+      <div class="modalWindowBody">
+        <h5>We think you might be a bot...</h5>
+        <div id="px-captcha"></div>  <!-- This div is where the captcha element will be rendered. make sure you have this div somewhere in your modal. -->
+        <div class="reasons">
+                <span>You might have received this message if JavaScript or cookies were disabled in your browser settings. </span><br />
+                <span>Occasionally a plugin or extension may be at fault. If you would like to learn more just reference <a href="https://www.perimeterx.com/whywasiblocked/#">Why Was I Blocked</a> for more details.</span>
+            </div>
+            <div class="pxRefId"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // this object mocks an advanced blocking response. In real world solution this will return from your network call.
+    const jsonResponse = {
+      "appId": "PXTEST",
+        "jsClientSrc": "https://client.perimeterx.net/main.min.js",
+        "firstPartyEnabled": false,
+        "vid": "72a9b8fa-45aa-40b0-a3b5-f16c089a11cd",
+        "uuid": "89c46bf1-07d3-45d5-8b9f-613642d8c80c",
+        "hostUrl": "https://collector.perimeterx.net",
+        "blockScript": "https://captcha.px-cdn.net/PXTEST/captcha.js?a=c&m=0"
+    }
+    const btnElement = document.querySelector(".btn-block");
+    btnElement.addEventListener("click", (evt) => {
+      // when the submit button is clicked we fake a network request that will result in advanced blocking response
+      fetch("https://httpstat.us/403").then((response) => {
+        if (!response.ok) {
+          // since we are receiving back a 403 the request wont be ok. We will use jsonResponse object as a mock response body.
+          // first, add the window parameters (note jsonResponse object is a mock for what would have returned from r.body on a real network call)
+          window._pxAppId = jsonResponse.appId;
+          window._pxJsClientSrc = jsonResponse.jsClientSrc;
+            window._pxFirstPartyEnabled = jsonResponse.firstPartyEnabled;
+            window._pxVid = jsonResponse.vid;
+            window._pxUuid = jsonResponse.uuid;
+            window._pxHostUrl = jsonResponse.hostUrl;
 
-				    // raising the modal
-				    const modalElement = document.querySelector(".modalWindow");
-				    modalElement.querySelector(".pxRefId").innerText = `Reference ID: ${jsonResponse.uuid}`;
-				    modalElement.classList.add("modalWindowTarget");
+            // raising the modal
+            const modalElement = document.querySelector(".modalWindow");
+            modalElement.querySelector(".pxRefId").innerText = `Reference ID: ${jsonResponse.uuid}`;
+            modalElement.classList.add("modalWindowTarget");
 
-				    // This is where the magic happens. Add the blockscript to the page using a script element and append it to the head so it will get executed.
-				    let script = document.createElement('script');
-					script.src = jsonResponse.blockScript;
-					document.getElementsByTagName('head')[0].appendChild(script);
-				}
-			});
-		});
-		const closeBtnElement = document.querySelector(".modalWindowClose");
-		closeBtnElement.addEventListener("click", (evt) => {
-			const modalElement = document.querySelector(".modalWindow");
-			modalElement.classList.remove("modalWindowTarget");
-		});
-	</script>
+            // This is where the magic happens. Add the blockscript to the page using a script element and append it to the head so it will get executed.
+            let script = document.createElement('script');
+          script.src = jsonResponse.blockScript;
+          document.getElementsByTagName('head')[0].appendChild(script);
+        }
+      });
+    });
+    const closeBtnElement = document.querySelector(".modalWindowClose");
+    closeBtnElement.addEventListener("click", (evt) => {
+      const modalElement = document.querySelector(".modalWindow");
+      modalElement.classList.remove("modalWindowTarget");
+    });
+  </script>
 </body>
 </html>
