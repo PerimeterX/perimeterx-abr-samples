@@ -67,7 +67,7 @@
           modalElement.classList.add("modalWindowTarget");
 
           // This is where the magic happens. Add the blockscript to the page using a script element and append it to the head so it will get executed.
-          let script = document.createElement('script');
+          const script = document.createElement('script');
           script.src = jsonResponse.blockScript;
           document.getElementsByTagName('head')[0].appendChild(script);
         }
