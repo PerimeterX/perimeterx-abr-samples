@@ -6,9 +6,9 @@
 
 ## What Is Advanced Blocking Response?
 
-In special cases, (such as XHR post requests) a full Captcha page render might not be an option. In such cases, using the Advanced Blocking Response returns a JSON object continaing all the information needed to render your own Captcha challenge implementation, be it a popup modal, a section on the page, etc. 
+In special cases, (such as XHR post requests) a full Captcha page render might not be an option. In such cases, using the Advanced Blocking Response returns a JSON object continaing all the information needed to render your own Captcha challenge implementation, be it a popup modal, a section on the page, etc.
 
-Advanced Blocking Response occurs when a request that is marked for blocking contains an `Accept` header with the value of `application/json`. It returns a JSON with the following structure: 
+Advanced Blocking Response occurs when a request that is marked for blocking contains an `Accept` header with the value of `application/json`. It returns a JSON with the following structure:
 
 ```javascript
 {
@@ -24,7 +24,7 @@ Advanced Blocking Response occurs when a request that is marked for blocking con
 
 ## Minimum Requirements
 
-To render the challenege element (be it Human Challenge or reCaptcha) you must have the following elements/snippets in your implementation: 
+To render the challenege element (be it Human Challenge or reCaptcha) you must have the following elements/snippets in your implementation:
 
 ### The Window Object Properties
 
@@ -32,12 +32,12 @@ The element that renders the challenge must contain the following `window` objec
 
 ```javascript
 <script>
-    window._pxAppId = '<appId>';
-    window._pxJsClientSrc = '<jsClientSrc>';
-    window._pxFirstPartyEnabled = <firstPartyEnabled>;
-    window._pxVid = '<vid>';
-    window._pxUuid = '<uuid>';
-    window._pxHostUrl = '<hostUrl>';
+    window._pxAppId = '<appId>'; // PerimeterX's application id
+    window._pxJsClientSrc = '<jsClientSrc>'; // PerimeterX's JavaScript sensor url
+    window._pxFirstPartyEnabled = <firstPartyEnabled>; // A boolean flag indicating wether first party is enabled or not
+    window._pxVid = '<vid>'; // PerimeterX's visitor id
+    window._pxUuid = '<uuid>'; // PerimeterX's unique user id
+    window._pxHostUrl = '<hostUrl>'; // PerimeterX's cloud component URL
 </script>
 ```
 
@@ -63,16 +63,16 @@ document.getElementsByTagName('head')[0].appendChild(script);
 
 ## Challenge Result Callback
 
-You can add the `_pxOnCaptchaSuccess` callback function on the `window` object of your challenge page to react according to the challenge status. For example when using a modal, you can use this callback to close the modal once the challenge is successfullt solved. 
+You can add the `_pxOnCaptchaSuccess` callback function on the `window` object of your challenge page to react according to the challenge status. For example when using a modal, you can use this callback to close the modal once the challenge is successfullt solved.
 
 The `_pxOnCaptchaSuccess` callback can be used as follows:
 
 ```javascript
    window._pxOnCaptchaSuccess = function(isValid) {
        if (isValid) {
-           alert("Challenge Successful 😺");
+           alert("Challenge Successful");
        } else {
-           alert("Challenge Failed 😿");
+           alert("Challenge Failed");
        }
    }
-```   
+```
