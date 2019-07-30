@@ -64,7 +64,6 @@
         if (!response.ok) {
           // since we are receiving back a 403 the request wont be ok. We will use jsonResponse object as a mock response body.
           // first, add the window parameters (note jsonResponse object is a mock for what would have returned from r.body on a real network call)
-          window._pxAppId = jsonResponse.appId;
           window._pxJsClientSrc = jsonResponse.jsClientSrc;
           window._pxFirstPartyEnabled = jsonResponse.firstPartyEnabled;
           window._pxVid = jsonResponse.vid;
